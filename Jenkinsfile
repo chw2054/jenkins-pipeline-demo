@@ -1,11 +1,5 @@
-pipeline {
-  agent none
-  stages {
-    stage('Hello') {
-      def customImage = docker.build("chw2054:sth")
-      customImage.inside {
-        sh 'python -V'
-      }
-    }
-  }
+node {
+    checkout scm
+    def customImage = docker.build("my-image:latest")
+    customImage.push()
 }
