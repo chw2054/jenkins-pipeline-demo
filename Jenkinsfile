@@ -5,7 +5,7 @@ pipeline {
       agent {
         dockerfile {
             filename 'Dockerfile'
-            additionalBuildArgs  '--build-arg version=1.0.2  --no-cache=true -t chw2054/epas:flask'
+            additionalBuildArgs  '--build-arg version=1.0.2  --force-rm -t chw2054/epas:flask'
         }
       }
       steps{
