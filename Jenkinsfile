@@ -2,10 +2,14 @@ pipeline {
   agent none
   stages {
     stage('Hello') {
-      agent any
-      steps {
-        sh 'echo hello!!!'
-        sh 'echo world~~~!!!'
+      agent {
+        dockerfile {
+            filename 'Dockerfile'
+            additionalBuildArgs  '--build-arg version=1.0.2 -t chw2054/epas:flask'
+        }
+      }
+      steps{
+        sh 'python -c "import sys;print(sys.executable, sys.version)"'
       }
     }
   }
